@@ -11,3 +11,5 @@ click
 pylint
 pandas 
 requests==2.27.1
+fastapi
+uvicorn
