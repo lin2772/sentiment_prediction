@@ -16,6 +16,7 @@ async def root():
 @app.get("/columns/{col}/data/{dat}")
 async def callModel(col: str, dat: str):
     dp= pd.DataFrame(eval(dat), columns = [col])
-    return(loaded_model.predict(dp))
+    return {"results": str(loaded_model.predict(dp))}
+    
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='0.0.0.0') 

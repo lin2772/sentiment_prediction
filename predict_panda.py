@@ -11,4 +11,4 @@ data = [[".@user holds the fate of the republican pay in his tiny, tiny, tiny, l
 
 dp= pd.DataFrame(data, columns = ["tweet"])
 
-print(loaded_model.predict(dp))
+print(str(loaded_model.predict(dp)))
