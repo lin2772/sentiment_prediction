@@ -29,10 +29,17 @@ async def callModel(col: str, dat: str):
 
 @app.post("/input/")
 async def inputForm(request: Request, username: str = Form(...), password: str = Form(...)):
-    dp= pd.DataFrame(eval(password), columns = [username])
-    return {"results": str(loaded_model.predict(dp))}
-    # return templates.TemplateResponse('post.html', {
-    # 'request': request, user})
+    data = eval(password)
+    dp = pd.DataFrame(data, columns = [username])
+    res = eval(str(loaded_model.predict(dp)))
+    resStr = ""
+    print(data)
+    for i in range(0, len(res)):
+        if res[i] == 0:
+            resStr += data[i] + " : good speech"
+        if res[i] == 1:
+            resStr += data[i] + " : not good speech"
+    return {resStr}
     
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='0.0.0.0') 
