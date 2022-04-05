@@ -17,13 +17,9 @@ app = FastAPI(template_folder='template')
 @app.get("/")
 async def root(request: Request):
     return templates.TemplateResponse('post.html', { 'request': request})
-    # return {"message": "This is IDS721 22Spring Group Project. Weilie Lin, Bohan Li, Yubo Ding"}
 
 @app.get("/columns/{col}/data/{dat}")
 async def callModel(col: str, dat: str):
-    #col = tweet
-    #data = ['you suck']
-    
     dp= pd.DataFrame(eval(dat), columns = [col])
     return {"results": str(loaded_model.predict(dp))}
 
@@ -31,15 +27,15 @@ async def callModel(col: str, dat: str):
 async def inputForm(request: Request, username: str = Form(...), password: str = Form(...)):
     data = eval(password)
     dp = pd.DataFrame(data, columns = [username])
-    res = eval(str(loaded_model.predict(dp)))
+    res = str(loaded_model.predict(dp))[1:-1].split(" ")
     resStr = ""
-    print(data)
     for i in range(0, len(res)):
-        if res[i] == 0:
-            resStr += data[i] + " : good speech"
-        if res[i] == 1:
-            resStr += data[i] + " : not good speech"
-    return {resStr}
+        if res[i] == '0':
+            resStr += data[i] + ": good speech\n"
+            print("here"+ resStr)
+        if res[i] == '1':
+            resStr += data[i] + ": not good speech\n"
+    return templates.TemplateResponse('result.html', { 'request': request, 'username': resStr})
     
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='0.0.0.0') 
