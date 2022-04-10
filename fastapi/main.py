@@ -7,6 +7,7 @@ from pandas.io.json import json_normalize
 from starlette.templating import Jinja2Templates
 from starlette.requests import Request
 from pathlib import Path
+import urllib.parse
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -18,15 +19,15 @@ app = FastAPI(template_folder='template')
 async def root(request: Request):
     return templates.TemplateResponse('post.html', { 'request': request})
 
-@app.get("/columns/{col}/data/{dat}")
-async def callModel(col: str, dat: str):
-    dp= pd.DataFrame(eval(dat), columns = [col])
+@app.get("/data/{dat}")
+async def callModel(dat: str):
+    dp= pd.DataFrame(eval(dat), columns = ['tweet'])
     return {"results": str(loaded_model.predict(dp))}
 
 @app.post("/input/")
-async def inputForm(request: Request, username: str = Form(...), password: str = Form(...)):
+async def inputForm(request: Request, password: str = Form(...)):
     data = eval(password)
-    dp = pd.DataFrame(data, columns = [username])
+    dp = pd.DataFrame(data, columns = ['tweet'])
     res = str(loaded_model.predict(dp))[1:-1].split(" ")
     resStr = ""
     for i in range(0, len(res)):
@@ -39,3 +40,9 @@ async def inputForm(request: Request, username: str = Form(...), password: str =
     
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='0.0.0.0') 
+    
+
+#message = urllib.parse.quote("['I like it']")
+#print(app.url_path_for('callModel', col='tweet', dat=message))
+    
+    
