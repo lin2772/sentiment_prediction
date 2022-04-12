@@ -16,6 +16,8 @@ https://user-images.githubusercontent.com/46533075/161579533-3fd14d90-43d3-47d9-
 ## Screenshot
 Website:
 ![image](https://user-images.githubusercontent.com/46533075/163020348-067bc90e-e7cb-4b66-be37-4aec241a4a80.png)
+Locust load testing
+![image](https://user-images.githubusercontent.com/46533075/163021136-05828764-dc9a-4f84-89f7-0857fce857e7.png)
 
 
 ## Future work
