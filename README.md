@@ -2,7 +2,7 @@
 ## Description
 Sentiment prediction website and chrome extension using machine learning model from Azure Databricks.
 ## Features
-1. Databricks AutoML model (Data source:[Kaggle](https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech).
+1. Databricks AutoML model (Data source:[Kaggle](https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech))
 2. Load testing with Locust
 3. Flask + AWS App Runner
 4. Chrome Extension
