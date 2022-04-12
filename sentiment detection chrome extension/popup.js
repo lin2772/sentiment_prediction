@@ -11,7 +11,7 @@ function processMessage(message) {
   const Http = new XMLHttpRequest();     
   message = "[\'"+message+"\']"
   console.log(message);
-  var link = 'https://wm22vwpv8f.us-east-1.awsapprunner.com/columns/tweet/data/' + encodeURIComponent(message);
+  var link = 'https://wm22vwpv8f.us-east-1.awsapprunner.com/data/' + encodeURIComponent(message);
   console.log(link);
   Http.open("GET", link);
   Http.send();
