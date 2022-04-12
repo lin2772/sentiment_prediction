@@ -17,7 +17,7 @@
     }
   },
   "host_permissions": [
-    "https://wm22vwpv8f.us-east-1.awsapprunner.com/columns/tweet/data/*"
+    "https://wm22vwpv8f.us-east-1.awsapprunner.com/data/*"
   ],
   "icons": {
     "16": "/images/get_started16.png",
