@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Form
+from fastapi import Form
+from fastapi import FastAPI
 import uvicorn
 import pandas as pd
 import mlflow
@@ -9,11 +10,13 @@ from starlette.requests import Request
 from pathlib import Path
 import urllib.parse
 
+
 BASE_DIR = Path(__file__).resolve().parent
 
 templates = Jinja2Templates(directory=str(Path(BASE_DIR, 'templates')))
 loaded_model = mlflow.pyfunc.load_model('model')
 app = FastAPI(template_folder='template')
+#app = FastAPI()
 
 @app.get("/")
 async def root(request: Request):
@@ -43,6 +46,6 @@ if __name__ == '__main__':
     
 
 #message = urllib.parse.quote("['I like it']")
-#print(app.url_path_for('callModel', col='tweet', dat=message))
+#print(app.url_path_for('callModel', col='tweet', dat=message))a
     
     
