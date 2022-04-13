@@ -10,7 +10,8 @@ Sentiment prediction website and chrome extension using machine learning model f
 ## Architecture
 ![IDS project architecture drawio (1)](https://user-images.githubusercontent.com/46533075/163001093-c8270c42-d921-496f-aac8-89ae54526315.png)
 ## Demo
-https://user-images.githubusercontent.com/46533075/163084300-93169e55-24cc-4b0f-af07-3a669ee509ca.mp4
+https://user-images.githubusercontent.com/46533075/163238942-5e2d6d8c-ea5f-4c6d-9e27-00d919a6c1ea.mp4
+
 
 ## Screenshot
 Website:
